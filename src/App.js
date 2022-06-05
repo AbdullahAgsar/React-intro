@@ -1,17 +1,12 @@
 import './App.css';
-import {Container, Row, Col} from "reactstrap";
+import Layout from "./components/layouts/Layout";
+import { createElement } from "react";
 
 function App() {
   return (
-    <div className="App">
-      <Container>
-        <Row>
-            <Col>
-                
-            </Col>
-        </Row>
-      </Container>
-    </div>
+    <Layout className="App">
+
+    </Layout>
   );
 }
 

@@ -27,18 +27,43 @@ ul{
   padding: 0;
 }
 
+#root,
 body,
 html{
   height: 100%;
 }
 
 :root{
-  --primary-color: #202124;
-  --secondary-color: #f9ab00;
+  --primary-color: #78113e;
+  --secondary-color: #EDEDED;
   --primary-text-color: #fff;
-  --primary-border-color: #dddddd;
-  --secondary-text-color: #626262;
-  --third-text-color: #c9c9c9;
-  --primary-hover-color: rgba(255, 255, 255, 0.2);
-  --secondary-hover-color: rgba(249, 171, 0, 0.2);
+  --primary-bg-color: #fff;
+  /*--primary-border-color: #dddddd;*/
+  /*--secondary-text-color: #626262;*/
+  /*--third-text-color: #c9c9c9;*/
+  /*--primary-hover-color: rgba(255, 255, 255, 0.2);*/
+  /*--secondary-hover-color: rgba(249, 171, 0, 0.2);*/
+}
+
+body{
+  background-color: var(--primary-bg-color);
+}
+
+.left-menu{
+  background: linear-gradient(var(--primary-color) 70%, rgb(16, 16, 16));
+  padding: 0;
+  box-shadow: 0 0 15px -1px rgba(16, 16, 16,54%);
+  z-index: 2;
+  position: relative;
+  color: var(--primary-text-color);
+}
+
+header{
+  background-color: var(--primary-color);
+  height: 80px;
+  color: var(--primary-text-color);
+}
+
+footer{
+  height: 80px;
 }
