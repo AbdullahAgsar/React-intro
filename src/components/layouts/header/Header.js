@@ -1,7 +1,8 @@
-import React, {Component,memo} from 'react';
+import React, {memo} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
 import styled from "styled-components";
+import Item from "./Item.js";
 
 
 const userSections = [
@@ -133,61 +134,20 @@ const UserSectionsMenu = styled.ul`
   }
 `;
 
-class Header extends Component {
-    render() {
-        return (
-            <header className="pt-2 pb-2 ps-4 pe-4 d-flex justify-content-between align-items-center">
-                <PageLocation className="page-location">
-                    <FontAwesomeIcon icon={faHome} />
-                    Anasayfa
-                </PageLocation>
+function Header() {
+    return (
+        <header className="pt-2 pb-2 ps-4 pe-4 d-flex justify-content-between align-items-center">
+            <PageLocation className="page-location">
+                <FontAwesomeIcon icon={faHome} />
+                Anasayfa
+            </PageLocation>
 
-                <UserSectionsMenu className="user-sections">
-                    {
-                        userSections.map(value => {
-                            if(value.subMenus.length === 0){
-                                return(
-                                    <li key={value.key}>
-                                        <a href={value.link}>
-                                            {
-                                                value.value
-                                            }
-                                        </a>
-                                    </li>
-                                )
-                            }
-                            else{
-                                return (
-                                    <li key={value.key} className="dropdown">
-                                        <a href={value.link}>
-                                            {
-                                                value.value
-                                            }
-                                            <FontAwesomeIcon icon={faChevronRight} />
-                                        </a>
+            <UserSectionsMenu className="user-sections">
+                {userSections.map((value,index) => (<Item value={value.value} keys={value.key} key={index} link={value.link} subMenu={value.subMenus}/>))}
+            </UserSectionsMenu>
+        </header>
+    );
 
-                                        <ul>
-                                            {
-                                                value.subMenus.map(subMenu => {
-                                                    return(
-                                                        <li key={subMenu.key}>
-                                                            <a href={subMenu.link}>
-                                                                {subMenu.value}
-                                                            </a>
-                                                        </li>
-                                                    )
-                                                })
-                                            }
-                                        </ul>
-                                    </li>
-                                )
-                            }
-                        })
-                    }
-                </UserSectionsMenu>
-            </header>
-        );
-    }
 }
 
 export default memo(Header);
