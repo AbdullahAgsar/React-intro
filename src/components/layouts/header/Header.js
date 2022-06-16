@@ -1,10 +1,32 @@
-import React, {Component} from 'react';
+import React, {Component,memo} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import styled from "styled-components";
 
 
-const userSections = ["profil","çıkış","dil"]
+const userSections = [
+    {
+        key: 1,
+        value:"Profil",
+        link:"#",
+        subMenus: []
+    },
+    {
+        key: 2,
+        value: "Çıkış",
+        link: "#",
+        subMenus: []
+    },
+    {
+        key: 3,
+        value: "Dil",
+        link: "",
+        subMenus: [
+            {key: 1, value: "TR", link: "#tr"},
+            {key: 2, value: "EN", link: "#en"}
+        ]
+    }
+]
 
 const PageLocation = styled.h1`
   font-size: 3em;
@@ -96,6 +118,11 @@ const UserSectionsMenu = styled.ul`
       text-decoration: none;
       color: inherit;
       display: block;
+      text-transform: lowercase;
+      
+      &:first-letter{
+        text-transform: uppercase;
+      }
     }
     
     svg{
@@ -117,28 +144,41 @@ class Header extends Component {
 
                 <UserSectionsMenu className="user-sections">
                     {
-                        userSections.map((value,index)=>{
-                            if(value.toLowerCase() === "dil" || value.toLowerCase() === "language"){
-                                return (
-                                    <li key={index} className="dropdown">
-                                        {value.toLowerCase().replace(/^[\u00C0-\u1FFF\u2C00-\uD7FF\w]|\s[\u00C0-\u1FFF\u2C00-\uD7FF\w]/g, x => x.toUpperCase())}
-                                        <FontAwesomeIcon icon={faChevronRight} />
-
-                                        <ul>
-                                            <li>
-                                                <a href="#">TR</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">EN</a>
-                                            </li>
-                                        </ul>
+                        userSections.map(value => {
+                            if(value.subMenus.length === 0){
+                                return(
+                                    <li key={value.key}>
+                                        <a href={value.link}>
+                                            {
+                                                value.value
+                                            }
+                                        </a>
                                     </li>
                                 )
                             }
                             else{
                                 return (
-                                    <li key={index}>
-                                        <a href="#">{value.toLowerCase().replace(/^[\u00C0-\u1FFF\u2C00-\uD7FF\w]|\s[\u00C0-\u1FFF\u2C00-\uD7FF\w]/g, x => x.toUpperCase())}</a>
+                                    <li key={value.key} className="dropdown">
+                                        <a href={value.link}>
+                                            {
+                                                value.value
+                                            }
+                                            <FontAwesomeIcon icon={faChevronRight} />
+                                        </a>
+
+                                        <ul>
+                                            {
+                                                value.subMenus.map(subMenu => {
+                                                    return(
+                                                        <li key={subMenu.key}>
+                                                            <a href={subMenu.link}>
+                                                                {subMenu.value}
+                                                            </a>
+                                                        </li>
+                                                    )
+                                                })
+                                            }
+                                        </ul>
                                     </li>
                                 )
                             }
@@ -150,4 +190,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default memo(Header);
