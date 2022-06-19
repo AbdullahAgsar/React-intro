@@ -10,10 +10,10 @@ class Layout extends Component {
 
         return (
             <Row className="h-100 mw-100">
-                <Col xl={2} lg={3} md={0} className="h-100 p-0">
+                <Col lg={3} md={0} className="h-100 p-0">
                     <Navi></Navi>
                 </Col>
-                <Col xl={10} lg={9} md={12} className="h-100 p-0">
+                <Col lg={9} md={12} className="h-100 p-0">
                     <Row>
                         <Header></Header>
                     </Row>

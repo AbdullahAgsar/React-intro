@@ -49,15 +49,6 @@ body{
   background-color: var(--primary-bg-color);
 }
 
-.left-menu{
-  background: linear-gradient(var(--primary-color) 70%, rgb(16, 16, 16));
-  padding: 0;
-  box-shadow: 0 0 15px -1px rgba(16, 16, 16,54%);
-  z-index: 2;
-  position: relative;
-  color: var(--primary-text-color);
-}
-
 header{
   background-color: var(--primary-color);
   height: 80px;

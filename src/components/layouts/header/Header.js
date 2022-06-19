@@ -139,7 +139,7 @@ function Header() {
         <header className="pt-2 pb-2 ps-4 pe-4 d-flex justify-content-between align-items-center">
             <PageLocation className="page-location">
                 <FontAwesomeIcon icon={faHome} />
-                Anasayfa
+                Home
             </PageLocation>
 
             <UserSectionsMenu className="user-sections">
